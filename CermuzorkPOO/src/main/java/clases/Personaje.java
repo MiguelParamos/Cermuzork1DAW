@@ -67,24 +67,7 @@ public class Personaje extends ElementoConDinero {
 		this.genero = genero;
 	}
 
-	/**
-	 * obtiene la cantidad de vida actual del personaje
-	 * 
-	 * @return cantidad de vida actual del personaje
-	 */
-	public short getVida() {
-		return vida;
-	}
-
-	/**
-	 * cambia el valor a la vida del personaje
-	 * 
-	 * @param vida nuevo valor de la vida del personaje
-	 */
-	public void setVida(short vida) {
-		this.vida = vida;
-	}
-
+	
 	/**
 	 * devuelve el arma actual del personaje
 	 * 
