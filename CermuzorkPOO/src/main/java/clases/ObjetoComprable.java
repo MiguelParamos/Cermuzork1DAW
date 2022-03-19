@@ -1,13 +1,24 @@
 package clases;
 
-public abstract class ObjetoComprable extends ElementoConNombre{
+import clases.ElementoConDinero;
 
-	public ObjetoComprable(byte dinero, String nombre) {
-		super(dinero, nombre);
-		
+/**
+ * Represntará un objeto que se puede comprar, el cual será una pocion, un arma o un objeto defensivo
+ * 
+ * @author Berta
+ * @author Miguel Páramos
+ *
+ */
+public abstract class ObjetoComprable extends ElementoConDinero {
+
+	/**
+	 * Representa un objeto extiende de ElementoConDinero
+	 * 
+	 * @param nombre nombre del objeto comprable
+	 * @dinero dinero que cuesta el objeto comprable
+	 */
+	public ObjetoComprable(String nombre, byte dinero) {
+		super(nombre, dinero);
 	}
-	
-	
-	
 
 }

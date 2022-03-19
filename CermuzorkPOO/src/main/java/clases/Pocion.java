@@ -1,26 +1,62 @@
 package clases;
 
+
+
+/**
+ * Representa un objeto que sumara la vida actual del personaje.
+ * 
+ * @author Berta
+ * @author Miguel Páramos
+ * 
+ */
 public class Pocion extends ObjetoComprable {
-	
-	private byte vida;
+	/**
+	 * cantidadPuntosRestaurados --> Representa la cantidad de punto que sumará la
+	 * vida del personaje
+	 */
+	private byte cantidadPuntoRestaurados;
 
-	public Pocion(byte dinero, String nombre, byte vida) {
-		super(dinero, nombre);
-		this.vida = vida;
+	/**
+	 * Constructor de poción con todos sus campos
+	 * 
+	 * @param nombre                   nombre de la poción
+	 * @param precio                   precio de la poción
+	 * @param cantidadPuntoRestaurados cantidad de puntos de vida que restaura la
+	 *                                 poción
+	 */
+	public Pocion(String nombre, byte precio, byte cantidadPuntoRestaurados) {
+		super(nombre, precio);
+		this.cantidadPuntoRestaurados = cantidadPuntoRestaurados;
 	}
 
-	public byte getVida() {
-		return vida;
+	/**
+	 * getter de pocion
+	 * 
+	 * @return devuelve la cantidad de puntos de salud que se restauran al tomar una
+	 *         poción
+	 */
+	public byte getCantidadPuntoRestaurados() {
+		return cantidadPuntoRestaurados;
 	}
 
-	public void setVida(byte vida) {
-		this.vida = vida;
+	/**
+	 * setter de pocion
+	 * 
+	 * @param cantidadPuntoRestaurados devuelve la cantidad de puntos de salud que
+	 *                                 se restauran al tomar una poción
+	 */
+	public void setCantidadPuntoRestaurados(byte cantidadPuntoRestaurados) {
+		this.cantidadPuntoRestaurados = cantidadPuntoRestaurados;
 	}
 
-	@Override
+	/**
+	 * función toString, que muestra la información del objeto
+	 * 
+	 * @return String con la información del objeto en una sola línea
+	 */
 	public String toString() {
-		return "Pocion [vida=" + vida + "]";
+		return "Poción: " + this.getNombre() + " | Puntos que restaura: " + this.cantidadPuntoRestaurados
+				+ " | Precio: " + this.getDinero();
 	}
 
-	
 }
