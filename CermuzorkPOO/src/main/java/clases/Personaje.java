@@ -111,7 +111,7 @@ public class Personaje extends ElementoConDinero {
 	 */
 	@Override
 	public String toString() {
-		return this.getNombre() + " " + (genero == 'm' ? "(hombre)" : "(mujer)") + "\n\t" + "Vida: " + this.getVida()
+		return this.getNombre() + " " + (genero == 'm' ? "(hombre)" : "(mujer)") + "\n\t" + "Vida: " + this.vida
 				+ "\n\t" + "Dinero: " + this.getDinero() + "\n\t" + this.arma + "\n\t" + this.objetoDefensivo + "\n";
 	}
 
