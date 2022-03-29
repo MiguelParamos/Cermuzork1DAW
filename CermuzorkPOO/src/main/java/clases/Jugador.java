@@ -1,5 +1,7 @@
 package clases;
 
+import excepciones.GeneroInvalidoException;
+
 /**
  * Representa un jugador que cuenta con unas posiciones que se usaran para
  * moverse y localizarlo.
@@ -32,9 +34,10 @@ public class Jugador extends Personaje {
 	 *                     encuentra
 	 * @param posicionCol  número que indica la columna actual en la que el jugador
 	 *                     se encuentra
+	 * @throws GeneroInvalidoException 
 	 */
 	public Jugador(String nombre, char genero, byte dinero, short vida, Arma arma, ObjetoDefensivo objetoDefensivo,
-			byte posicionFila, byte posicionCol) {
+			byte posicionFila, byte posicionCol) throws GeneroInvalidoException {
 		super(nombre, genero, dinero, vida, arma, objetoDefensivo);
 		this.posicionFila = posicionFila;
 		this.posicionCol = posicionCol;

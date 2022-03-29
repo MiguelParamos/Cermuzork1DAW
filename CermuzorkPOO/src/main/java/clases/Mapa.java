@@ -3,6 +3,8 @@ package clases;
 import java.util.ArrayList;
 import java.util.Random;
 
+import excepciones.GeneroInvalidoException;
+
 /**
  * Representa una matriz de lugar, que tendra 16 posiciones (4x4), y un jugador,
  * el cual se usara para jugar.
@@ -25,8 +27,9 @@ public class Mapa extends ElementoConNombre {
 	 * 
 	 * @param nombreJugador nombre del jugador/a que jugará la partida
 	 * @param generoJugador género del jugador/a. Solo puede ser 'm' o 'f'
+	 * @throws GeneroInvalidoException 
 	 */
-	public Mapa(String nombreJugador, char generoJugador) {
+	public Mapa(String nombreJugador, char generoJugador) throws GeneroInvalidoException {
 		// Se crea el Mapa con un nombre
 		super("Tierra de cermuzos");
 		Random r = new Random();
@@ -122,9 +125,14 @@ public class Mapa extends ElementoConNombre {
 			byte objetoDefensivoAleatoria = (byte) r.nextInt(objetoDefensivoEnemigos.size());
 			byte nombreAleatorio = (byte) r.nextInt(nombresEnemigos.size());
 
-			enemigosMundo.add(new Enemigo(nombresEnemigos.get(nombreAleatorio), (r.nextBoolean() ? 'm' : 'f'),
-					(byte) r.nextInt(26), (byte) r.nextInt(100), armasEnemigos.get(armaAleatoria),
-					objetoDefensivoEnemigos.get(objetoDefensivoAleatoria), false));
+			try {
+				enemigosMundo.add(new Enemigo(nombresEnemigos.get(nombreAleatorio), (r.nextBoolean() ? 'm' : 'f'),
+						(byte) r.nextInt(26), (byte) r.nextInt(100), armasEnemigos.get(armaAleatoria),
+						objetoDefensivoEnemigos.get(objetoDefensivoAleatoria), false));
+			} catch (GeneroInvalidoException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			objetoDefensivoEnemigos.remove(objetoDefensivoAleatoria);
 			armasEnemigos.remove(armaAleatoria);
 			nombresEnemigos.remove(nombreAleatorio);
@@ -137,8 +145,14 @@ public class Mapa extends ElementoConNombre {
 				(byte) (15 + r.nextInt(25)));
 
 		// Se añade el enemigo final al mundo
-		enemigosMundo.add(new Enemigo("El primo loco de Voldemort", 'm', (byte) r.nextInt(((25 - 5) + 5)), (byte) 100,
-				armaBoss, defensaBoss, true));
+		Enemigo voldemort=null;
+		try {
+			voldemort=new Enemigo("El primo loco de Voldemort", 'm', (byte) r.nextInt(((25 - 5) + 5)), (byte) 100,
+					armaBoss, defensaBoss, true);
+			enemigosMundo.add(voldemort);
+		} catch (GeneroInvalidoException e) {
+			assert false : "El género de voldemort no era bueno";
+		}
 
 		// Se crean las pociones que apareceran sueltas por el mundo y se meten en un
 		// array

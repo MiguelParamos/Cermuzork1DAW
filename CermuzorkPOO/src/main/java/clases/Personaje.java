@@ -1,5 +1,6 @@
 package clases;
 
+import excepciones.GeneroInvalidoException;
 
 /**
  * Representa el nombre de un personaje que puede ser jugador o enemigo, su
@@ -38,12 +39,13 @@ public class Personaje extends ElementoConDinero {
 	 * @param vida       cantidad inicial de vida del personaje
 	 * @param arma       arma inicial del personaje
 	 * @param objetoDefensivo  objetoDefensivo inicial del personaje
+	 * @throws GeneroInvalidoException 
 	 */
-	public Personaje(String nombre, char genero, byte dinero, short vida, Arma arma, ObjetoDefensivo objetoDefensivo) {
+	public Personaje(String nombre, char genero, byte dinero, short vida, Arma arma, ObjetoDefensivo objetoDefensivo) throws GeneroInvalidoException {
 		super(nombre, dinero);
 		this.vida = vida;
 		this.arma = arma;
-		this.genero = genero;
+		this.setGenero(genero);
 		this.objetoDefensivo = objetoDefensivo;
 	}
 
@@ -62,8 +64,12 @@ public class Personaje extends ElementoConDinero {
 	 * 
 	 * @param genero nuevo genero del personaje. Solo puede ser 'm' (masculino) o
 	 *               'f' (femenino)
+	 * @throws GeneroInvalidoException 
 	 */
-	public void setGenero(char genero) {
+	public void setGenero(char genero) throws GeneroInvalidoException {
+		if(genero!='m'&&genero!='f') {
+			throw new GeneroInvalidoException("El genero "+genero+" no es válido, debe ser m o f");
+		}
 		this.genero = genero;
 	}
 

@@ -1,5 +1,7 @@
 package clases;
 
+import excepciones.GeneroInvalidoException;
+
 /**
  * Representa un enemigo con vida, nombre un arma y ObjetoDefensivo que puede ser o
  * no el enemigo final
@@ -26,9 +28,10 @@ public class Enemigo extends Personaje {
 	 * @param objetoDefensivo ObjetoDefensivo inicial del enemigo
 	 * @param esFinal    boolean que indica si es el boss final (cuando se mata el
 	 *                   juego acaba) o no.
+	 * @throws GeneroInvalidoException 
 	 */
 	public Enemigo(String nombre, char genero, byte dinero, short vida, Arma arma, ObjetoDefensivo objetoDefensivo,
-			boolean esFinal) {
+			boolean esFinal) throws GeneroInvalidoException {
 		super(nombre, genero, dinero, vida, arma, objetoDefensivo);
 		this.esFinal = esFinal;
 	}
